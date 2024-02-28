@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/category_nav_graph"
+    app:startDestination="@id/catagoryFragment">
+
+    <fragment
+        android:id="@+id/catagoryFragment"
+        android:name="com.example.viewmodelexample.fragment.CatagoryFragment"
+        android:label="Category"
+        tools:layout="@layout/fragment_catagory" />
+</navigation>
