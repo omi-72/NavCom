@@ -13,14 +13,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.viewmodelexample.activities.CategoryMealsActivity
+import com.example.viewmodelexample.activities.MainActivity
 import com.example.viewmodelexample.activities.MealActivity
 import com.example.viewmodelexample.adapter.CategoriesAdapter
 import com.example.viewmodelexample.adapter.MostPopularAdapter
 import com.example.viewmodelexample.bottomsheet.MealBottomSheetFragment
 import com.example.viewmodelexample.databinding.FragmentHomeBinding
+import com.example.viewmodelexample.db.MealDatabase
 import com.example.viewmodelexample.pojo.Meal
 import com.example.viewmodelexample.pojo.MealsByCategory
 import com.example.viewmodelexample.viewmodel.HomeViewModel
+import com.example.viewmodelexample.viewmodel.HomeViewModelFactory
 
 
 class HomeFragment : Fragment() {
@@ -32,14 +35,22 @@ class HomeFragment : Fragment() {
     private lateinit var categoriesAdapter: CategoriesAdapter
     private lateinit var rvMyList: RecyclerView
     private lateinit var viewModel : HomeViewModel
-   //val viewModel: HomeViewModel by viewModels()
+
+//    private val viewModel: HomeViewModel by lazy {
+//        val mealDatabase = MealDatabase.getInstance(requireActivity())
+//        val homeViewModelProviderFactory = HomeViewModelFactory(mealDatabase)
+//        ViewModelProvider(this, homeViewModelProviderFactory)[HomeViewModel::class.java]
+//    }
+
+
+    //val viewModel: HomeViewModel by viewModels()
 
 
     companion object{
-        const val MEAL_ID = "com.example.foodapp.fragment.idMeal"
-        const val MEAL_NAME = "com.example.foodapp.fragment.nameMeal"
-        const val MEAL_THUMB = "com.example.foodapp.fragment.thumbMeal"
-        const val CATEGORY_NAME = "com.example.foodapp.fragment.categoryName"
+        const val MEAL_ID = "com.example.viewmodelexample.fragment.idMeal"
+        const val MEAL_NAME = "com.example.viewmodelexample.fragment.nameMeal"
+        const val MEAL_THUMB = "com.example.viewmodelexample.fragment.thumbMeal"
+        const val CATEGORY_NAME = "com.example.viewmodelexample.fragment.categoryName"
     }
 
     override fun onCreateView(
@@ -47,9 +58,10 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater,container,false)
-     //   viewModel = (activity as MainActivity).viewModel
 
-       viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+        viewModel = (activity as MainActivity).viewModel
+
+   //    viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
 //        val viewModelProvider:ViewModelProvider= ViewModelProviders.of(this)
 //        viewModel= viewModelProvider.get(HomeViewModel::class.java)
@@ -91,8 +103,6 @@ class HomeFragment : Fragment() {
       //  onSearchIconClick()
 
     }
-
-
 
 
     private fun onPopularItemsLongClick() {

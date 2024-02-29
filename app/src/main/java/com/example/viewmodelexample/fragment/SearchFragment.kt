@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.viewmodelexample.activities.MainActivity
 import com.example.viewmodelexample.adapter.MealsAdapter
 import com.example.viewmodelexample.databinding.FragmentSearchBinding
 import com.example.viewmodelexample.viewmodel.HomeViewModel
@@ -24,7 +25,7 @@ class SearchFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-  //   viewModel = (activity as MainActivity).viewModel
+   viewModel = (activity as MainActivity).viewModel
 
     }
     override fun onCreateView(

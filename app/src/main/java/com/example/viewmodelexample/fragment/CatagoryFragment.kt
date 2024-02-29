@@ -11,19 +11,30 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.viewmodelexample.activities.MainActivity
 
 import com.example.viewmodelexample.adapter.CategoriesAdapter
 import com.example.viewmodelexample.databinding.FragmentCatagoryBinding
+import com.example.viewmodelexample.db.MealDatabase
+import com.example.viewmodelexample.pojo.Category
 import com.example.viewmodelexample.viewmodel.HomeViewModel
+import com.example.viewmodelexample.viewmodel.HomeViewModelFactory
 
 
 class CatagoryFragment : Fragment() {
 
     private lateinit var binding: FragmentCatagoryBinding
     private lateinit var categoriesAdapter : CategoriesAdapter
+    private var categoriesLiveData = MutableLiveData<List<Category>>()
 
 
     private lateinit var viewModel: HomeViewModel
+
+//    private val viewModel: HomeViewModel by lazy {
+//        val mealDatabase = MealDatabase.getInstance(requireActivity())
+//        val homeViewModelProviderFactory = HomeViewModelFactory(mealDatabase)
+//        ViewModelProvider(this, homeViewModelProviderFactory)[HomeViewModel::class.java]
+//    }
 
 
     override fun onCreateView(
@@ -33,7 +44,9 @@ class CatagoryFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentCatagoryBinding.inflate(inflater,container,false)
 
-   //     viewModel = (activity as MainActivity).viewModel
+        viewModel = (activity as MainActivity).viewModel
+
+        //viewModel = ViewModelProvider.AndroidViewModelFactory
 
 
         return binding.root
@@ -42,7 +55,7 @@ class CatagoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+       // viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         prepareRecyclerView()
         observerCategories()

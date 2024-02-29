@@ -16,21 +16,30 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.activity.*
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
+import com.example.viewmodelexample.activities.MainActivity
 import com.example.viewmodelexample.adapter.MealsAdapter
 import com.example.viewmodelexample.databinding.FragmentFavoritesBinding
+import com.example.viewmodelexample.db.MealDatabase
 import com.example.viewmodelexample.viewmodel.HomeViewModel
+import com.example.viewmodelexample.viewmodel.HomeViewModelFactory
 
 
 class FavoritesFragment : Fragment() {
     private lateinit var binding : FragmentFavoritesBinding
-    private lateinit var viewModel: HomeViewModel
+  //  private lateinit var viewModel: HomeViewModel
     private lateinit var mealsAdapter: MealsAdapter
+
+    private val viewModel: HomeViewModel by lazy {
+        val mealDatabase = MealDatabase.getInstance(requireActivity())
+        val homeViewModelProviderFactory = HomeViewModelFactory(mealDatabase)
+        ViewModelProvider(this, homeViewModelProviderFactory)[HomeViewModel::class.java]
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-      //  viewModel = (activity as MainActivity).viewModel
+    //  viewModel = (activity as MainActivity).viewModel
 
         viewModel.getRandomMeal()
         viewModel.getPopularItems()
@@ -53,7 +62,7 @@ class FavoritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+      // viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         prepareRecyclerView()
         observerFavorite()
