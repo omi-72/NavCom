@@ -34,13 +34,13 @@ class HomeFragment : Fragment() {
     private lateinit var popularItemsAdapter: MostPopularAdapter
     private lateinit var categoriesAdapter: CategoriesAdapter
     private lateinit var rvMyList: RecyclerView
-    private lateinit var viewModel : HomeViewModel
+   // private lateinit var viewModel : HomeViewModel
 
-//    private val viewModel: HomeViewModel by lazy {
-//        val mealDatabase = MealDatabase.getInstance(requireActivity())
-//        val homeViewModelProviderFactory = HomeViewModelFactory(mealDatabase)
-//        ViewModelProvider(this, homeViewModelProviderFactory)[HomeViewModel::class.java]
-//    }
+    private val viewModel: HomeViewModel by lazy {
+        val mealDatabase = MealDatabase.getInstance(requireActivity())
+        val homeViewModelProviderFactory = HomeViewModelFactory(mealDatabase)
+        ViewModelProvider(this, homeViewModelProviderFactory)[HomeViewModel::class.java]
+    }
 
 
     //val viewModel: HomeViewModel by viewModels()
@@ -59,7 +59,7 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater,container,false)
 
-        viewModel = (activity as MainActivity).viewModel
+    //    viewModel = (activity as MainActivity).viewModel
 
    //    viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 

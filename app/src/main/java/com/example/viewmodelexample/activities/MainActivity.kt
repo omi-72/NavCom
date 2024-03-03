@@ -22,11 +22,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity() {
-    val viewModel: HomeViewModel by lazy {
-        val mealDatabase = MealDatabase.getInstance(this)
-        val homeViewModelProviderFactory = HomeViewModelFactory(mealDatabase)
-        ViewModelProvider(this, homeViewModelProviderFactory)[HomeViewModel::class.java]
-    }
+//    val viewModel: HomeViewModel by lazy {
+//        val mealDatabase = MealDatabase.getInstance(this)
+//        val homeViewModelProviderFactory = HomeViewModelFactory(mealDatabase)
+//        ViewModelProvider(this, homeViewModelProviderFactory)[HomeViewModel::class.java]
+//    }
 
     lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController

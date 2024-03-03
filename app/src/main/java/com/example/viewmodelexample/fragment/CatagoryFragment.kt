@@ -28,13 +28,13 @@ class CatagoryFragment : Fragment() {
     private var categoriesLiveData = MutableLiveData<List<Category>>()
 
 
-    private lateinit var viewModel: HomeViewModel
+ //   private lateinit var viewModel: HomeViewModel
 
-//    private val viewModel: HomeViewModel by lazy {
-//        val mealDatabase = MealDatabase.getInstance(requireActivity())
-//        val homeViewModelProviderFactory = HomeViewModelFactory(mealDatabase)
-//        ViewModelProvider(this, homeViewModelProviderFactory)[HomeViewModel::class.java]
-//    }
+    private val viewModel: HomeViewModel by lazy {
+        val mealDatabase = MealDatabase.getInstance(requireActivity())
+        val homeViewModelProviderFactory = HomeViewModelFactory(mealDatabase)
+        ViewModelProvider(this, homeViewModelProviderFactory)[HomeViewModel::class.java]
+    }
 
 
     override fun onCreateView(
@@ -44,7 +44,7 @@ class CatagoryFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentCatagoryBinding.inflate(inflater,container,false)
 
-        viewModel = (activity as MainActivity).viewModel
+     //   viewModel = (activity as MainActivity).viewModel
 
         //viewModel = ViewModelProvider.AndroidViewModelFactory
 

@@ -25,7 +25,7 @@ class SearchFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-   viewModel = (activity as MainActivity).viewModel
+  // viewModel = (activity as MainActivity).viewModel
 
     }
     override fun onCreateView(
